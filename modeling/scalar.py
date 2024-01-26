@@ -9,9 +9,18 @@ class Wavefield_1D():
 
         # TODO: read parameters from a file
 
-        self.nt = 1001
-        self.dt = 1e-3
-        self.fmax = 30.0
+        # self.nt = 1001
+        # self.dt = 1e-3
+        # self.fmax = 30.0
+        parameterFile = 'C:\\Users\\Gamer\\OneDrive\\Área de Trabalho\\GISIS_training\\modeling\\data.txt'
+        print('Loading parameters from disk %s'%parameterFile)
+        
+        with open(parameterFile,'r') as archive:
+            linhas = [linha.strip() for linha in archive.readlines()]
+
+        self.nt = int(linhas[0])
+        self.dt = float(linhas[1])
+        self.fmax = float(linhas[2])
 
     def get_type(self):
         print(self._type)
